@@ -1,11 +1,18 @@
 package model.dao.impl;
 
+import java.sql.Connection;
 import java.util.List;
 
 import model.dao.CardDao;
 import model.entities.Card;
 
 public class CardDaoJDBC implements CardDao {
+	
+	private Connection conn;
+	
+	public CardDaoJDBC(Connection conn) {
+		this.conn = conn;
+	}
 
 	@Override
 	public void create(Card card) {
