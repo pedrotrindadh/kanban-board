@@ -40,7 +40,7 @@ public class Card implements Serializable{
 		return title;
 	}
 
-	public void setTile(String title) {
+	public void setTitle(String title) {
 		this.title = title;
 	}
 
