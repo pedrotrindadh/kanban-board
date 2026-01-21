@@ -33,5 +33,10 @@ public class Program {
 		Card updateCard = new Card(7, "Meet", "Meet with all squad", null, null);
 		cardDao.update(updateCard);
 		System.out.println("Card Updated!");
+		
+		System.out.println("========FIFTH TEST: move CardDao========");
+		Card moveCard = new Card(3, null, null, null, APPROVED);
+		cardDao.move(moveCard);;
+		System.out.println("Card moved!");
 	}
 }
