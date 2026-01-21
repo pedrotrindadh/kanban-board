@@ -1,5 +1,8 @@
 package Application;
 
+import static model.entities.enums.CardStatus.*;
+
+import java.util.Date;
 import java.util.List;
 
 import model.dao.CardDao;
@@ -12,17 +15,19 @@ public class Program {
 		CardDao cardDao = DaoFactory.createdCardDao();
 		
 		System.out.println("========FIRST TEST: findAll CardDao========");
-		
 		List<Card> list = cardDao.findAll();
-		
 		for (Card obj:list) {
 			System.out.println(obj);
 		}
 		
 		System.out.println("========SECOND TEST: findById CardDao========");
-		
 		Card id = cardDao.findById(1);
-		
 		System.out.println(id);
+		
+		System.out.println("========THIRD TEST: create CardDao========");
+		Card newCard = new Card(null, "BugFix", "Fix feature of NewBank", new Date(), TO_DO);
+		cardDao.create(newCard);
+		System.out.println("Created a new card, Id: " + newCard.getId());
+		
 	}
 }
