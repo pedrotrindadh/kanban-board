@@ -29,5 +29,9 @@ public class Program {
 		cardDao.create(newCard);
 		System.out.println("Created a new card, Id: " + newCard.getId());
 		
+		System.out.println("========FOURTH TEST: update CardDao========");
+		Card updateCard = new Card(7, "Meet", "Meet with all squad", null, null);
+		cardDao.update(updateCard);
+		System.out.println("Card Updated!");
 	}
 }

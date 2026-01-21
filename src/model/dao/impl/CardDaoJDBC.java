@@ -63,8 +63,25 @@ public class CardDaoJDBC implements CardDao {
 
 	@Override
 	public void update(Card card) {
-		// TODO Auto-generated method stub
+		PreparedStatement st = null;
 		
+		try {
+			st = conn.prepareStatement("UPDATE card "
+					+"SET Title = ?, Topic = ? "
+					+ "WHERE Id = ?");
+			
+			st.setString(1, card.getTitle());
+			st.setString(2, card.getTopic());
+			st.setInt(3, card.getId());
+			
+			st.executeUpdate();
+		}
+		catch (SQLException e) {
+			throw new DbException(e.getMessage());
+		}
+		finally {
+			DB.closeStatement(st);
+		}
 	}
 
 	@Override
