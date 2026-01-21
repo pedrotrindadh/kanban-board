@@ -38,5 +38,9 @@ public class Program {
 		Card moveCard = new Card(3, null, null, null, APPROVED);
 		cardDao.move(moveCard);;
 		System.out.println("Card moved!");
+		
+		System.out.println("========SIXTH TEST: delete CardDao========");
+		cardDao.delete(3);
+		System.out.println("Card deleted!");
 	}
 }

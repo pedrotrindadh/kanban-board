@@ -106,8 +106,21 @@ public class CardDaoJDBC implements CardDao {
 
 	@Override
 	public void delete(Integer id) {
-		// TODO Auto-generated method stub
+		PreparedStatement st = null;
 		
+		try {
+			st = conn.prepareStatement("DELETE FROM card WHERE Id = ?");
+			
+			st.setInt(1, id);
+			
+			st.executeUpdate();
+		}
+		catch (SQLException e) {
+			throw new DbException(e.getMessage());
+		}
+		finally {
+			DB.closeStatement(st);
+		}
 	}
 
 	@Override
@@ -155,7 +168,6 @@ public class CardDaoJDBC implements CardDao {
 				list.add(obj);
 			}
 			
-			
 			return list;
 		}
 		catch (SQLException e) {
@@ -176,5 +188,4 @@ public class CardDaoJDBC implements CardDao {
 		card.setCardStatus(CardStatus.valueOf(rs.getString("CardStatus").toUpperCase()));
 		return card;
 	}
-
 }
