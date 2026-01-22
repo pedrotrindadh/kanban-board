@@ -23,7 +23,7 @@ public class Program {
 			System.out.println("1 - Show the board");
 			System.out.println("2 - Filter a card");
 			System.out.println("3 - Create a card");
-			System.out.println("4 - Edit the title and topic of card");
+			System.out.println("4 - Update card title and topic");
 			System.out.println("5 - Move the status of card");
 			System.out.println("6 - Remove a card");
 			System.out.println("7 - Exit");
@@ -41,7 +41,7 @@ public class Program {
 					createCard();
 					break;
 				case 4:
-					editTitleTopic();
+					updateTitleTopic();
 					break;
 				case 5:
 					moveStatus();
@@ -62,6 +62,7 @@ public class Program {
 	private static void showBoard() {
 		System.out.println("");
 		System.out.println("Current board:");
+		System.out.println("-----------------------------------------------");
 		List<Card> list = cardDao.findAll();
 		for (Card card : list) {
 			System.out.printf("Id: %d | Title: %s | Status: %s %n"
@@ -95,11 +96,21 @@ public class Program {
 		Card card = new Card(null,title, topic, new Date(), TO_DO);
 		cardDao.insert(card);
 		System.out.println("Card created!! Id: " + card.getId());
+		System.out.println("");
 	}
 
-	private static void editTitleTopic() {
-		// TODO Auto-generated method stub
-		
+	private static void updateTitleTopic() {
+		System.out.println("");
+		System.out.printf("Which card do you want to update?");
+		int id = sc.nextInt();
+		sc.nextLine(); // Clear the buffer
+		System.out.printf("Enter a new title: ");
+		String title = sc.nextLine();
+		System.out.print("Enter a new topic: ");
+		String topic = sc.nextLine();
+		Card card = new Card(id,title, topic, null, null);
+		cardDao.update(card);
+		System.out.println("Card updated!!");
 	}
 
 	private static void moveStatus() {
