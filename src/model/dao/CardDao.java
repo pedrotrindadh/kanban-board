@@ -7,8 +7,8 @@ import model.entities.Card;
 public interface CardDao {
 	
 	void insert(Card card);
-	void update(Card card);
-	void move(Card card);
+	void updateTitleTopic(Card card);
+	void updateStatus(Card card);
 	void delete(Integer id);
 	Card findById(Integer id);
 	List<Card> findAll();

@@ -62,7 +62,7 @@ public class CardDaoJDBC implements CardDao {
 	}
 
 	@Override
-	public void update(Card card) {
+	public void updateTitleTopic(Card card) {
 		PreparedStatement st = null;
 		
 		try {
@@ -85,7 +85,7 @@ public class CardDaoJDBC implements CardDao {
 	}
 
 	@Override
-	public void move(Card card) {
+	public void updateStatus(Card card) {
 		PreparedStatement st = null;
 		
 		try {

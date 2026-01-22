@@ -109,7 +109,7 @@ public class Program {
 		System.out.print("Enter a new topic: ");
 		String topic = sc.nextLine();
 		Card card = new Card(id,title, topic, null, null);
-		cardDao.update(card);
+		cardDao.updateTitleTopic(card);
 		System.out.println("Card updated!!");
 	}
 
