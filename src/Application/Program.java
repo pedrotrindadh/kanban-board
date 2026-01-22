@@ -1,10 +1,17 @@
 package Application;
 
+import java.util.List;
 import java.util.Scanner;
+
+import model.dao.CardDao;
+import model.dao.DaoFactory;
+import model.entities.Card;
 
 public class Program {
 	
 	public static final Scanner sc = new Scanner(System.in);
+	
+	public static final CardDao cardDao = DaoFactory.createdCardDao();
 	
 	public static void main(String[] args) {
 		
@@ -48,10 +55,18 @@ public class Program {
 			}
 		}
 	}
-
+	
 	private static void showBoard() {
-		// TODO Auto-generated method stub
-		
+		System.out.println("");
+		System.out.println("Current board:");
+		List<Card> list = cardDao.findAll();
+		for (Card card : list) {
+			System.out.printf("Id: %d | Title: %s | Status: %s %n"
+					+ "Topic: %s %n"
+					+ "Created: %s%n", card.getId(), card.getTitle(), card.getCardStatus(), card.getTopic(), card.getCreatedDate());
+			System.out.println("-----------------------------------------------");
+		}
+		System.out.println("");
 	}
 
 	private static void filterCard() {
