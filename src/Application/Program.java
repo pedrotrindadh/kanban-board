@@ -148,7 +148,10 @@ public class Program {
 	}
 
 	private static void removeCard() {
-		// TODO Auto-generated method stub
-		
+		System.out.print("Which one card by id do you want to remove?");
+		int id = sc.nextInt();
+		cardDao.delete(id);
+		System.out.println("Card removed!!");
+		System.out.println("");
 	}
 }
