@@ -70,8 +70,16 @@ public class Program {
 	}
 
 	private static void filterCard() {
-		// TODO Auto-generated method stub
-		
+		System.out.println("");
+		System.out.print("Choose a card to filter by Id: ");
+		int id = sc.nextInt();
+		Card card = cardDao.findById(id);
+		System.out.println("-----------------------------------------------");
+		System.out.printf("Id: %d | Title: %s | Status: %s %n"
+				+ "Topic: %s %n"
+				+ "Created: %s%n", card.getId(), card.getTitle(), card.getCardStatus(), card.getTopic(), card.getCreatedDate());
+		System.out.println("-----------------------------------------------");
+		System.out.println("");
 	}
 
 	private static void createCard() {
