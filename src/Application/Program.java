@@ -1,6 +1,6 @@
 package Application;
 
-import static model.entities.enums.CardStatus.TO_DO;
+import static model.entities.enums.CardStatus.*;
 
 import java.util.Date;
 import java.util.List;
@@ -24,7 +24,7 @@ public class Program {
 			System.out.println("2 - Filter a card");
 			System.out.println("3 - Create a card");
 			System.out.println("4 - Update card title and topic");
-			System.out.println("5 - Move the status of card");
+			System.out.println("5 - Update card status");
 			System.out.println("6 - Remove a card");
 			System.out.println("7 - Exit");
 			
@@ -44,7 +44,7 @@ public class Program {
 					updateTitleTopic();
 					break;
 				case 5:
-					moveStatus();
+					updateStatus();
 					break;
 				case 6:
 					removeCard();
@@ -89,7 +89,7 @@ public class Program {
 	private static void createCard() {
 		System.out.println("");
 		sc.nextLine(); // Clear the buffer
-		System.out.printf("Enter a new title: ");
+		System.out.print("Enter a new title: ");
 		String title = sc.nextLine();
 		System.out.print("Enter a new topic: ");
 		String topic = sc.nextLine();
@@ -101,10 +101,10 @@ public class Program {
 
 	private static void updateTitleTopic() {
 		System.out.println("");
-		System.out.printf("Which card do you want to update?");
+		System.out.printf("Which card by id do you want to update the title and topic?");
 		int id = sc.nextInt();
 		sc.nextLine(); // Clear the buffer
-		System.out.printf("Enter a new title: ");
+		System.out.print("Enter a new title: ");
 		String title = sc.nextLine();
 		System.out.print("Enter a new topic: ");
 		String topic = sc.nextLine();
@@ -113,9 +113,38 @@ public class Program {
 		System.out.println("Card updated!!");
 	}
 
-	private static void moveStatus() {
-		// TODO Auto-generated method stub
-		
+	private static void updateStatus() {
+		System.out.println("");
+		System.out.print("Which card by id do you want to update the status?");
+		int id = sc.nextInt();
+		sc.nextLine(); // Clear the buffer
+		System.out.println("Choose status: ");
+		System.out.println("1 - To do");
+		System.out.println("2 - Processing");
+		System.out.println("3 - Done");
+		System.out.println("4 - Approved");
+		int status = sc.nextInt();
+		if (status == 1) {
+			Card card = new Card(id, null, null, null, TO_DO);
+			cardDao.updateStatus(card);
+		}
+		else if (status == 2) {
+			Card card = new Card(id, null, null, null, PROCESSING);
+			cardDao.updateStatus(card);
+		}
+		else if (status == 3) {
+			Card card = new Card(id, null, null, null, DONE);
+			cardDao.updateStatus(card);
+		}
+		else if (status == 4) {
+			Card card = new Card(id, null, null, null, APPROVED);
+			cardDao.updateStatus(card);
+		}
+		else {
+			System.out.println("Choose a number between 1 and 4");
+		}
+		System.out.println("Card updated!!");
+		System.out.println("");
 	}
 
 	private static void removeCard() {
