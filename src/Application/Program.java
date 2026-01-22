@@ -1,5 +1,8 @@
 package Application;
 
+import static model.entities.enums.CardStatus.TO_DO;
+
+import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
 
@@ -83,8 +86,15 @@ public class Program {
 	}
 
 	private static void createCard() {
-		// TODO Auto-generated method stub
-		
+		System.out.println("");
+		sc.nextLine(); // Clear the buffer
+		System.out.printf("Enter a new title: ");
+		String title = sc.nextLine();
+		System.out.print("Enter a new topic: ");
+		String topic = sc.nextLine();
+		Card card = new Card(null,title, topic, new Date(), TO_DO);
+		cardDao.insert(card);
+		System.out.println("Card created!! Id: " + card.getId());
 	}
 
 	private static void editTitleTopic() {
