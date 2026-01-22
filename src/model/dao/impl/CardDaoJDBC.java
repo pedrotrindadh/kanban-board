@@ -23,7 +23,7 @@ public class CardDaoJDBC implements CardDao {
 	}
 
 	@Override
-	public void create(Card card) {
+	public void insert(Card card) {
 		PreparedStatement st = null;
 		
 		try {

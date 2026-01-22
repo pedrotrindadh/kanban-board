@@ -6,7 +6,7 @@ import model.entities.Card;
 
 public interface CardDao {
 	
-	void create(Card card);
+	void insert(Card card);
 	void update(Card card);
 	void move(Card card);
 	void delete(Integer id);
